@@ -1,0 +1,13 @@
+[Unit]
+Description=LanguageTool Server Instance 2
+After=network.target
+
+[Service]
+Type=simple
+User=deploy
+WorkingDirectory=/opt/languagetool-full
+ExecStart=/usr/bin/java -Xms2g -Xmx4g -XX:+UseG1GC -XX:+UseStringDeduplication -XX:MaxGCPauseMillis=200 -cp languagetool-server.jar org.languagetool.server.HTTPServer --port 8082 --config /opt/languagetool/server/languagetool.conf --allow-origin "*"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

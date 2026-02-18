@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules lang="en"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../../languagetool-core/src/main/resources/org/languagetool/rules/rules.xsd">
+    
+    <!-- BUSINESS ENGLISH RULES -->
+    
+    <!-- Formal Tone: Avoid colloquialisms -->
+    <rule id="FORMAL_TONE_1" name="Formal Tone: Avoid 'kids'">
+        <pattern>
+            <token>kids</token>
+        </pattern>
+        <message>Use a more formal term: 'children'.</message>
+        <short>Formal tone</short>
+        <example type="correction">children</example>
+    </rule>
+    
+    <rule id="FORMAL_TONE_2" name="Formal Tone: Avoid 'stuff'">
+        <pattern>
+            <token>stuff</token>
+        </pattern>
+        <message>Avoid colloquial 'stuff'. Use 'items', 'materials', or 'matters'.</message>
+        <short>Formal tone</short>
+        <example type="correction">materials</example>
+    </rule>
+    
+    <rule id="FORMAL_TONE_3" name="Formal Tone: Avoid 'thing'">
+        <pattern>
+            <token>thing</token>
+        </pattern>
+        <message>Use a more specific term instead of 'thing'.</message>
+        <short>Formal tone</short>
+        <example type="correction">aspect</example>
+    </rule>
+    
+    <rule id="FORMAL_TONE_4" name="Formal Tone: Avoid 'a lot of'">
+        <pattern>
+            <token>a</token>
+            <token>lot</token>
+            <token>of</token>
+        </pattern>
+        <message>Use 'substantial', 'significant', or 'considerable' for formal writing.</message>
+        <short>Formal tone</short>
+        <example type="correction">substantial</example>
+    </rule>
+    
+    <rule id="FORMAL_TONE_5" name="Formal Tone: Avoid 'really'">
+        <pattern>
+            <token>really</token>
+        </pattern>
+        <message>Avoid 'really' in formal writing. Use 'particularly', 'extremely', or 'highly'.</message>
+        <short>Formal tone</short>
+        <example type="correction">particularly</example>
+    </rule>
+    
+    <rule id="FORMAL_TONE_6" name="Formal Tone: Avoid 'very' (weak adverb)">
+        <pattern>
+            <token>very</token>
+        </pattern>
+        <message>Use a stronger adjective instead of 'very + adjective'.</message>
+        <short>Formal tone</short>
+        <example type="correction">extremely</example>
+    </rule>
+    
+    <!-- Business Writing: Common Errors -->
+    <rule id="BUSINESS_1" name="Business: 'I could care less' → 'I couldn't care less'">
+        <pattern>
+            <token>I</token>
+            <token>could</token>
+            <token>care</token>
+            <token>less</token>
+        </pattern>
+        <message>Use 'I couldn't care less' (negative).</message>
+        <short>Business writing</short>
+        <example type="correction">I couldn't care less</example>
+    </rule>
+    
+    <rule id="BUSINESS_2" name="Business: 'irregardless' → 'regardless'">
+        <pattern>
+            <token>irregardless</token>
+        </pattern>
+        <message>'Irregardless' is non-standard. Use 'regardless'.</message>
+        <short>Business writing</short>
+        <example type="correction">regardless</example>
+    </rule>
+    
+    <rule id="BUSINESS_3" name="Business: 'none' with plural">
+        <pattern>
+            <token>none</token>
+            <token postag="VBZ"/>
+        </pattern>
+        <message>'None' can take singular or plural. Consider using 'no one' or 'not any'.</message>
+        <short>Business writing</short>
+    </rule>
+    
+    <rule id="BUSINESS_4" name="Business: 'impact' as verb">
+        <pattern>
+            <token inflected="yes">impact</token>
+        </pattern>
+        <message>Use 'affect' as a verb. 'Impact' should be a noun.</message>
+        <short>Business writing</short>
+        <example type="correction">affect</example>
+    </rule>
+    
+    <!-- Academic Writing Rules -->
+    <rule id="ACADEMIC_1" name="Academic: First person singular">
+        <pattern>
+            <token>I</token>
+            <token postag="VBP"/>
+        </pattern>
+        <message>In academic writing, consider using passive voice or 'this study' instead of 'I'.</message>
+        <short>Academic writing</short>
+    </rule>
+    
+    <rule id="ACADEMIC_2" name="Academic: Contractions">
+        <pattern>
+            <token regexp="yes">can't|won't|don't|doesn't|didn't|isn't|aren't|wasn't|weren't|hasn't|haven't|hadn't|wouldn't|couldn't|shouldn't|it's|that's|he's|she's|there's|what's|who's|let's</token>
+        </pattern>
+        <message>Use full forms in academic writing: 'cannot', 'will not', 'do not'.</message>
+        <short>Academic writing</short>
+        <example type="correction">cannot</example>
+    </rule>
+    
+    <rule id="ACADEMIC_3" name="Academic: Avoid 'obviously'">
+        <pattern>
+            <token>obviously</token>
+        </pattern>
+        <message>Avoid 'obviously' in academic writing - it may patronize the reader.</message>
+        <short>Academic writing</short>
+    </rule>
+    
+    <rule id="ACADEMIC_4" name="Academic: 'utilize' → 'use'">
+        <pattern>
+            <token>utilize</token>
+        </pattern>
+        <message>'Utilize' is often unnecessarily complex. Use 'use'.</message>
+        <short>Academic writing</short>
+        <example type="correction">use</example>
+    </rule>
+    
+    <!-- Email Etiquette -->
+    <rule id="EMAIL_1" name="Email: 'Kind regards' (formal closing)">
+        <pattern>
+            <token>Best</token>
+            <token>Regards</token>
+        </pattern>
+        <message>Professional email closing.</message>
+        <short>Email etiquette</short>
+    </rule>
+    
+    <rule id="EMAIL_2" name="Email: 'Please find attached'">
+        <pattern>
+            <token>Please</token>
+            <token>find</token>
+            <token>attached</token>
+        </pattern>
+        <message>Consider 'Attached is...' or 'I have attached...' for clearer communication.</message>
+        <short>Email etiquette</short>
+        <example type="correction">Attached is</example>
+    </rule>
+    
+    <!-- Word Choice Improvements -->
+    <rule id="WORD_CHOICE_1" name="Improve: 'different from' vs 'different than'">
+        <pattern>
+            <token>different</token>
+            <token>than</token>
+        </pattern>
+        <message>Use 'different from' (or 'different to' in British English).</message>
+        <short>Word choice</short>
+        <example type="correction">different from</example>
+    </rule>
+    
+    <rule id="WORD_CHOICE_2" name="Improve: 'fewer' vs 'less'">
+        <pattern>
+            <token>less</token>
+            <token postag="NNS"/>
+        </pattern>
+        <message>Use 'fewer' for countable nouns.</message>
+        <short>Word choice</short>
+        <example type="correction">fewer</example>
+    </rule>
+    
+    <rule id="WORD_CHOICE_3" name="Improve: 'who' vs 'whom'">
+        <pattern>
+            <token>whom</token>
+            <token postag="VBZ"/>
+        </pattern>
+        <message>Check 'who' vs 'whom' usage.</message>
+        <short>Word choice</short>
+    </rule>
+    
+    <!-- Redundancy Rules -->
+    <rule id="REDUNDANCY_1" name="Redundancy: 'future prospects'">
+        <pattern>
+            <token>future</token>
+            <token>prospects</token>
+        </pattern>
+        <message>'Prospects' already implies 'future'.</message>
+        <short>Redundancy</short>
+        <example type="correction">prospects</example>
+    </rule>
+    
+    <rule id="REDUNDANCY_2" name="Redundancy: 'past history'">
+        <pattern>
+            <token>past</token>
+            <token>history</token>
+        </pattern>
+        <message>'History' already implies 'past'.</message>
+        <short>Redundancy</short>
+        <example type="correction">history</example>
+    </rule>
+    
+    <rule id="REDUNDANCY_3" name="Redundancy: 'free gift'">
+        <pattern>
+            <token>free</token>
+            <token>gift</token>
+        </pattern>
+        <message>'Gift' already implies 'free'.</message>
+        <short>Redundancy</short>
+        <example type="correction">gift</example>
+    </rule>
+    
+    <rule id="REDUNDANCY_4" name="Redundancy: 'unexpected surprise'">
+        <pattern>
+            <token>unexpected</token>
+            <token>surprise</token>
+        </pattern>
+        <message>'Surprise' already implies 'unexpected'.</message>
+        <short>Redundancy</short>
+        <example type="correction">surprise</example>
+    </rule>
+    
+    <rule id="REDUNDANCY_5" name="Redundancy: 'combine together'">
+        <pattern>
+            <token>combine</token>
+            <token>together</token>
+        </pattern>
+        <message>'Combine' already implies 'together'.</message>
+        <short>Redundancy</short>
+        <example type="correction">combine</example>
+    </rule>
+    
+    <!-- Commonly Confused Words -->
+    <rule id="CONFUSED_1" name="Confused: 'affect' vs 'effect'">
+        <pattern>
+            <token>affect</token>
+        </pattern>
+        <message>'Affect' is usually a verb. 'Effect' is usually a noun.</message>
+        <short>Common confusion</short>
+    </rule>
+    
+    <rule id="CONFUSED_2" name="Confused: 'their/there/they're'">
+        <pattern>
+            <token>there</token>
+        </pattern>
+        <message>Check: 'there' (place), 'their' (possessive), 'they're' (they are).</message>
+        <short>Common confusion</short>
+    </rule>
+    
+    <rule id="CONFUSED_3" name="Confused: 'your/you're'">
+        <pattern>
+            <token>your</token>
+        </pattern>
+        <message>Check: 'your' (possessive), 'you're' (you are).</message>
+        <short>Common confusion</short>
+    </rule>
+    
+    <rule id="CONFUSED_4" name="Confused: 'its/it's'">
+        <pattern>
+            <token>its</token>
+        </pattern>
+        <message>Check: 'its' (possessive), 'it's' (it is or it has).</message>
+        <short>Common confusion</short>
+    </rule>
+    
+    <!-- Punctuation Improvements -->
+    <rule id="PUNCT_1" name="Avoid: Multiple exclamation marks">
+        <pattern>
+            <token regexp="yes">!{2,}</token>
+        </pattern>
+        <message>Use a single exclamation mark for professionalism.</message>
+        <short>Punctuation</short>
+        <example type="correction">!</example>
+    </rule>
+    
+    <rule id="PUNCT_2" name="Avoid: Multiple question marks">
+        <pattern>
+            <token regexp="yes"\?{2,}</token>
+        </pattern>
+        <message>Use a single question mark.</message>
+        <short>Punctuation</short>
+        <example type="correction">?</example>
+    </rule>
+    
+    <!-- Jargon Detection -->
+    <rule id="JARGON_1" name="Business Jargon: 'leverage'">
+        <pattern>
+            <token>leverage</token>
+        </pattern>
+        <message>Consider using 'use', 'exploit', or 'utilize' instead of 'leverage'.</message>
+        <short>Jargon</short>
+        <example type="correction">use</example>
+    </rule>
+    
+    <rule id="JARGON_2" name="Business Jargon: 'synergy'">
+        <pattern>
+            <token>synergy</token>
+        </pattern>
+        <message>Avoid buzzword. Use 'cooperation' or 'collaboration'.</message>
+        <short>Jargon</short>
+        <example type="correction">cooperation</example>
+    </rule>
+    
+    <rule id="JARGON_3" name="Business Jargon: 'circle back'">
+        <pattern>
+            <token>circle</token>
+            <token>back</token>
+        </pattern>
+        <message>Avoid jargon. Use 'follow up' or 'return to'.</message>
+        <short>Jargon</short>
+        <example type="correction">follow up</example>
+    </rule>
+    
+    <rule id="JARGON_4" name="Business Jargon: 'deep dive'">
+        <pattern>
+            <token>deep</token>
+            <token>dive</token>
+        </pattern>
+        <message>Avoid jargon. Use 'detailed analysis' or 'thorough review'.</message>
+        <short>Jargon</short>
+        <example type="correction">detailed analysis</example>
+    </rule>
+    
+    <rule id="JARGON_5" name="Business Jargon: 'move the needle'">
+        <pattern>
+            <token>move</token>
+            <token>the</token>
+            <token>needle</token>
+        </pattern>
+        <message>Avoid jargon. Use 'make a difference' or 'achieve results'.</message>
+        <short>Jargon</short>
+        <example type="correction">make a difference</example>
+    </rule>
+    
+</rules>
